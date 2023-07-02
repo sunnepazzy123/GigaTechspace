@@ -21,7 +21,7 @@ const { checkboxes, components, isFetching, } = useSelector<any, CheckboxState>(
 
 
   useEffect(() => {
-    const interval = setIntervalComponent(2000);
+    const interval = setIntervalComponent(20000);
     return () => clearInterval(interval);
   }, []);
 
