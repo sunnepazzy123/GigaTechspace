@@ -17,7 +17,19 @@ const mergeComponentList = (componentList: IComponentList) => {
   const arr = [] as ComponentData[];
   for (const key in componentList) {
     const slice = componentList[key].slice(-30);
-    arr.push(...slice);
+
+    if(slice.length === 0) {
+      continue
+    }
+
+    const result = slice.reduce((accumulator, current) => {
+      accumulator.letter += current.letter;
+      accumulator.id = current.id;
+      accumulator.letter_index = current.letter_index
+      return accumulator;
+    }, { letter: '', id: -1, letter_index: -1});
+    
+    arr.push(result);
   }
   return arr;
 };

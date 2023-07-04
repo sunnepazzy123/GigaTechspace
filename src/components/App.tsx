@@ -10,7 +10,6 @@ import {
   deleteIdCheckboxComponentAction,
   getIdCheckboxComponentAction,
 } from "../store/actions/checkbox";
-import { v4 as uuidv4 } from "uuid";
 import "semantic-ui-css/semantic.min.css";
 
 export interface ComponentData extends IResponse {
@@ -20,7 +19,7 @@ export interface ComponentData extends IResponse {
 const App: React.FC = () => {
   const dispatch = useDispatch();
 
-  const { checkboxes, components, isFetching } = useSelector<
+  const { checkboxes, components, } = useSelector<
     any,
     CheckboxState
   >((state) => state.checkbox);
@@ -73,11 +72,10 @@ const App: React.FC = () => {
           </button>
         </div>
       </div>
-      {isFetching && <h5>loading...</h5>}
-      {components.length === 0 && <h5>No Data Found</h5>}
+
       <div className="components">
-        {components.map((component) => (
-          <CheckBoxComponent component={component} key={uuidv4()} />
+        {checkboxes.map((item, key) => (
+          <CheckBoxComponent components={components} key={key} item={item} />
         ))}
       </div>
     </div>

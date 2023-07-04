@@ -16,9 +16,6 @@ const CheckBox: React.FC<CheckBoxProps> = ({
     <label className="checkbox-label">
       <input
         type="checkbox"
-        checked={components.some(
-          (component) => component.id === checkboxNumber
-        )}
         onChange={() => handleCheckboxToggle(checkboxNumber)}
       />
       Checkbox {checkboxNumber + 1}
